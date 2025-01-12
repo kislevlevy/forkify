@@ -3,6 +3,7 @@
 A recipe search engine to find, collect, and create recipes.
 
 ## Features
+
 - Search for recipes from a large database.
 - Adjust serving sizes.
 - Save recipes.
@@ -10,11 +11,13 @@ A recipe search engine to find, collect, and create recipes.
 - Modern and clean UI.
 
 ## Built With
+
 - HTML
 - CSS
 - JavaScript
 
 ## Skills Demonstrated
+
 - JavaScript
 - DOM manipulation
 - REST API

@@ -5,13 +5,14 @@
   "default": "index.js",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html --dist-dir ./dist"
+    "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist"
   },
   "author": "Kislev Levy",
   "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
-    "parcel": "^2.12.0"
+    "parcel": "^2.12.0",
+    "svgo": "^3.3.2"
   },
   "dependencies": {
     "core-js": "^3.36.1",

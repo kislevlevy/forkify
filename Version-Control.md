@@ -4,11 +4,22 @@ This document tracks the versions and changes made to the project.
 
 ## Table of Contents
 
+1. [Version 1.3](#version-13)
 1. [Version 1.2](#version-12)
-2. [Version 1.1](#version-11)
-3. [Version 1.0](#version-10)
+1. [Version 1.1](#version-11)
+1. [Version 1.0](#version-10)
 
 ---
+
+## Version 1.3
+
+**Release Date:** 2025-01-12
+
+**Changes:**
+
+- Updated packeges
+- Added .gitignore & .prettierrc
+- Fixed build command
 
 ## Version 1.2
 

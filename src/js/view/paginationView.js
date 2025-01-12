@@ -1,11 +1,11 @@
 'use-strict';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Addons import:
 import icons from 'url:../../img/icons.svg';
 import View from './view';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Pagination View class:
 class PaginationView extends View {
   // Private declarations:
@@ -49,8 +49,7 @@ class PaginationView extends View {
     // Any other page in the middle:
     if (currentPage > 1 && currentPage < sumPages) {
       return (
-        this._generateNextBTN(currentPage) +
-        this._generatePreviousBTN(currentPage)
+        this._generateNextBTN(currentPage) + this._generatePreviousBTN(currentPage)
       );
     }
   }
@@ -79,4 +78,4 @@ class PaginationView extends View {
 }
 export default new PaginationView();
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////

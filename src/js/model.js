@@ -1,11 +1,11 @@
 'use-strict';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Imports:
 import { forkifyAPI, resultsPerPage, APIKey } from './config';
 import { APIAgent } from './helpers';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // All Data:
 export const state = {
   recipe: {},
@@ -18,7 +18,7 @@ export const state = {
   bookmarks: [],
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Create recipe object:
 const createRecipeObj = function (recipe) {
   return {
@@ -34,7 +34,7 @@ const createRecipeObj = function (recipe) {
   };
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Load Recipe:
 export const loadRecipe = async function (id) {
   try {
@@ -45,7 +45,7 @@ export const loadRecipe = async function (id) {
     state.recipe = createRecipeObj(data.data.recipe);
 
     // Set bookmark:
-    if (state.bookmarks.some(bookmark => bookmark.id === id))
+    if (state.bookmarks.some((bookmark) => bookmark.id === id))
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
 
@@ -55,7 +55,7 @@ export const loadRecipe = async function (id) {
   }
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Search Logic:
 export const loadSearchResults = async function (query) {
   try {
@@ -87,7 +87,7 @@ export const getSearchResultsByPage = function (page = state.search.page) {
   return state.search.results.slice(start, end);
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Change state for new serving size.
 export const updateServings = function (inc) {
   // Guard:
@@ -98,14 +98,14 @@ export const updateServings = function (inc) {
 
   // Change serving in state data:
   state.recipe.ingredients.forEach(
-    ing => (ing.quantity = (ing.quantity / state.recipe.servings) * newServing)
+    (ing) => (ing.quantity = (ing.quantity / state.recipe.servings) * newServing)
   );
 
   // Return new serving size
   state.recipe.servings = newServing;
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Bookmarks logic:
 
 // Add bookmark
@@ -123,7 +123,7 @@ export const addBookmark = function (recipe) {
 // Remove bookmark
 export const removeBookmark = function (id) {
   // remove from state:
-  const index = state.bookmarks.findIndex(el => el.id === id);
+  const index = state.bookmarks.findIndex((el) => el.id === id);
   state.bookmarks.splice(index, 1);
 
   // Mark current recipe in as bookmarked:
@@ -148,16 +148,16 @@ export const clearBookmarks = function () {
   localStorage.clear('bookmarks');
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Upload a new Recipe:
 export const uploadRecipe = async function (recipeArr) {
   try {
     // Turn the form to usable arr/obj:
     const recipeObj = Object.fromEntries(recipeArr);
     const ingredients = recipeArr
-      .filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '')
+      .filter((entry) => entry[0].startsWith('ingredient') && entry[1] !== '')
       .map(function (ing) {
-        const ingArr = ing[1].split(',').map(ing => ing.trim());
+        const ingArr = ing[1].split(',').map((ing) => ing.trim());
 
         // Guard:
         if (ingArr.length !== 3)
@@ -194,4 +194,4 @@ export const uploadRecipe = async function (recipeArr) {
   }
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////

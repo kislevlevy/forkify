@@ -1,6 +1,6 @@
 'use-strict';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // JS Import:
 import * as model from './model.js';
 import recipeView from './view/recipeView.js';
@@ -16,13 +16,13 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import addRecipeView from './view/addRecipeView.js';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Parcel hot change without reload:
 if (module.hot) {
   module.hot.accept();
 }
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Show recipe:
 const controlRecipe = async function () {
   try {
@@ -48,7 +48,7 @@ const controlRecipe = async function () {
   }
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Render pagination by page position:
 const renderPagination = function (page) {
   // Render to DOM:
@@ -63,7 +63,7 @@ const controllPagination = function (inc) {
   renderPagination((model.state.search.page += inc));
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Fetch search results:
 const controlSearchResults = async function () {
   try {
@@ -84,7 +84,7 @@ const controlSearchResults = async function () {
   }
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Controll servings + update renderd data:
 const controllServings = function (inc) {
   // Update servings size in model state:
@@ -94,12 +94,11 @@ const controllServings = function (inc) {
   recipeView.update(model.state.recipe);
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Add Bookmark:
 const controlAddBookmark = function () {
   // Set bookmarks:
-  if (model.state.recipe.bookmarked)
-    model.removeBookmark(model.state.recipe.id);
+  if (model.state.recipe.bookmarked) model.removeBookmark(model.state.recipe.id);
   else model.addBookmark(model.state.recipe);
 
   // Update view
@@ -107,7 +106,7 @@ const controlAddBookmark = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Add Recipe:
 const controlAddRecipe = async function (newRecipe) {
   try {
@@ -139,15 +138,11 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Initialization
 const init = function () {
   // Evnet handlers:
-  recipeView.addHandlerRender(
-    controlRecipe,
-    controllServings,
-    controlAddBookmark
-  );
+  recipeView.addHandlerRender(controlRecipe, controllServings, controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controllPagination);
   AddRecipeView.uploadRecipe(controlAddRecipe);
@@ -158,6 +153,6 @@ const init = function () {
 };
 init();
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Clear bookmarks:
 // model.clearBookmarks();

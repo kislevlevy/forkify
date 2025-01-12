@@ -1,10 +1,10 @@
 'use-strict';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Addons import:
 import icons from 'url:../../img/icons.svg';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // View class:
 export default class View {
   // Private declarations:
@@ -32,9 +32,7 @@ export default class View {
     // Create current and new markup for compare oporation:
     const newDOM = document.createRange().createContextualFragment(html);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
-    const currentElements = Array.from(
-      this._perentElement.querySelectorAll('*')
-    );
+    const currentElements = Array.from(this._perentElement.querySelectorAll('*'));
 
     // Compare and change only diffrent elements:
     newElements.forEach(function (newEle, i) {
@@ -50,7 +48,7 @@ export default class View {
 
       // Change attrebiuts:
       if (!newEle.isEqualNode(curEle)) {
-        Array.from(newEle.attributes).forEach(attr =>
+        Array.from(newEle.attributes).forEach((attr) =>
           curEle.setAttribute(attr.name, attr.value)
         );
       }
@@ -111,4 +109,4 @@ export default class View {
   }
 }
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////

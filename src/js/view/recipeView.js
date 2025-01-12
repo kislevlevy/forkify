@@ -1,12 +1,12 @@
 'use-strict';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // Addons import:
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 import View from './view';
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 // RecipeView class:
 class RecipeView extends View {
   // Private declarations:
@@ -17,7 +17,7 @@ class RecipeView extends View {
   // Event handler function:
   addHandlerRender(loadRecipe, servings, bookmark) {
     // Listen to Hash-Change & Load event:
-    ['hashchange', 'load'].forEach(e => window.addEventListener(e, loadRecipe));
+    ['hashchange', 'load'].forEach((e) => window.addEventListener(e, loadRecipe));
 
     // Listen for click on servings change:
     this._perentElement.addEventListener('click', function (e) {
@@ -97,9 +97,7 @@ class RecipeView extends View {
     <div class="recipe__ingredients">
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
-    ${this._data.ingredients
-      .map(this._getIngredientMarkup.bind(this))
-      .join(' ')}
+    ${this._data.ingredients.map(this._getIngredientMarkup.bind(this)).join(' ')}
         </ul>
     </div>
 
@@ -162,10 +160,10 @@ class RecipeView extends View {
 }
 export default new RecipeView();
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 /*
 
 */
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
