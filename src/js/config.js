@@ -11,7 +11,7 @@ export const timeoutSeconeds = 10;
 export const resultsPerPage = 10;
 
 // forkify API key:
-export const APIKey = '5d280793-c630-4bd9-9fd0-e8e2e1795d8a';
+export const APIKey = 'e2dc4e19-f010-4498-b226-adafe7519574';
 
 // Model Close in Seconeds:
 export const closeModleSec = 2.5;
