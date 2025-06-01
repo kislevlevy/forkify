@@ -2,7 +2,7 @@
 
 /////////////////////////////////////////////////////////////////
 // Imports:
-import { timeoutSeconeds } from './config';
+import { timeoutSecondes } from './config';
 
 /////////////////////////////////////////////////////////////////
 // Time out function:
@@ -18,7 +18,7 @@ export const timeout = function (s) {
 // ALI agent:
 export const APIAgent = async function (url, POSTdata = undefined) {
   try {
-    // Assing GET/POST request type:
+    // Assign GET/POST request type:
     const fetchPro = POSTdata
       ? fetch(url, {
           method: 'POST',
@@ -30,7 +30,7 @@ export const APIAgent = async function (url, POSTdata = undefined) {
       : fetch(url);
 
     // API call:
-    const result = await Promise.race([fetchPro, timeout(timeoutSeconeds)]);
+    const result = await Promise.race([fetchPro, timeout(timeoutSecondes)]);
     const data = await result.json();
 
     // Guard:

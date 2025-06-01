@@ -1,7 +1,7 @@
 'use-strict';
 
 /////////////////////////////////////////////////////////////////
-// Addons import:
+// Import icons
 import icons from 'url:../../img/icons.svg';
 
 /////////////////////////////////////////////////////////////////
@@ -10,7 +10,7 @@ export default class View {
   // Private declarations:
   _data;
 
-  // Render recipe in perent element:
+  // Render recipe in parent element:
   render(data) {
     // Guard
     if (!data || (Array.isArray(data) && data.length === 0))
@@ -29,12 +29,12 @@ export default class View {
     this._data = data;
     const html = this._generateMarkup();
 
-    // Create current and new markup for compare oporation:
+    // Create current and new markup for compare operation:
     const newDOM = document.createRange().createContextualFragment(html);
     const newElements = Array.from(newDOM.querySelectorAll('*'));
-    const currentElements = Array.from(this._perentElement.querySelectorAll('*'));
+    const currentElements = Array.from(this._parentElement.querySelectorAll('*'));
 
-    // Compare and change only diffrent elements:
+    // Compare and change only different elements:
     newElements.forEach(function (newEle, i) {
       const curEle = currentElements[i];
 
@@ -46,7 +46,7 @@ export default class View {
         curEle.textContent = newEle.textContent;
       }
 
-      // Change attrebiuts:
+      // Change attributes:
       if (!newEle.isEqualNode(curEle)) {
         Array.from(newEle.attributes).forEach((attr) =>
           curEle.setAttribute(attr.name, attr.value)
@@ -55,15 +55,15 @@ export default class View {
     });
   }
 
-  // Clear perent element:
+  // Clear parent element:
   _clear() {
-    this._perentElement.innerHTML = '';
+    this._parentElement.innerHTML = '';
   }
 
   // Insert to DOM:
   _ToDOM(data) {
     this._clear();
-    this._perentElement.insertAdjacentHTML('afterbegin', data);
+    this._parentElement.insertAdjacentHTML('afterbegin', data);
   }
 
   // Render spinner:

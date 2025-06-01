@@ -9,14 +9,14 @@ import View from './view';
 // Pagination View class:
 class PaginationView extends View {
   // Private declarations:
-  _perentElement = document.querySelector('.pagination');
+  _parentElement = document.querySelector('.pagination');
 
   addHandlerClick(handler) {
-    this._perentElement.addEventListener('click', function (e) {
+    this._parentElement.addEventListener('click', function (e) {
       // Select Button:
       const btn = e.target.closest('.btn--inline');
 
-      //Gaurd:
+      //Guard:
       if (!btn) return;
 
       // Apply change in page:
@@ -36,7 +36,7 @@ class PaginationView extends View {
       return this._generateNextBTN(currentPage);
     }
 
-    // On page 1 and there isen't any more pages:
+    // On page 1 and there isn't any more pages:
     if (currentPage === 1 && sumPages === 1) {
       return '';
     }

@@ -4,7 +4,7 @@
 // Search view class:
 class SearchView {
   // Private declarations:
-  _perentElement = document.querySelector('.search');
+  _parentElement = document.querySelector('.search');
   _searchField = document.querySelector('.search__field');
 
   // Get query from DOM:
@@ -23,7 +23,7 @@ class SearchView {
   // Event handler function:
   addHandlerSearch(handler) {
     // Listen to Hash-Change & Load event:
-    this._perentElement.addEventListener('submit', function (e) {
+    this._parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
       handler();
     });

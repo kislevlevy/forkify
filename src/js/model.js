@@ -26,7 +26,7 @@ const createRecipeObj = function (recipe) {
     title: recipe.title,
     publisher: recipe.publisher,
     sourceURL: recipe.source_url,
-    image: recipe.image_url,
+    image: recipe.image_url.replace('http://', 'https://'),
     servings: recipe.servings,
     cookingTime: recipe.cooking_time,
     ingredients: recipe.ingredients,
@@ -41,7 +41,7 @@ export const loadRecipe = async function (id) {
     // Get data:
     const data = await APIAgent(`${forkifyAPI}${id}?key=${APIKey}`);
 
-    // Formmating:
+    // Formatting:
     state.recipe = createRecipeObj(data.data.recipe);
 
     // Set bookmark:
@@ -49,7 +49,7 @@ export const loadRecipe = async function (id) {
       state.recipe.bookmarked = true;
     else state.recipe.bookmarked = false;
 
-    // Error handeling:
+    // Error handling:
   } catch (err) {
     throw err;
   }
@@ -59,16 +59,16 @@ export const loadRecipe = async function (id) {
 // Search Logic:
 export const loadSearchResults = async function (query) {
   try {
-    // Save query for refrance:
+    // Save query for reference:
     state.search.query = query;
 
     // Get data:
     const data = await APIAgent(`${forkifyAPI}?search=${query}?key=${APIKey}`);
 
-    // Formmating:
+    // Formatting:
     state.search.results = data.data.recipes.map(createRecipeObj);
 
-    // Error handeling:
+    // Error handling:
   } catch (err) {
     throw err;
   }
@@ -162,7 +162,7 @@ export const uploadRecipe = async function (recipeArr) {
         // Guard:
         if (ingArr.length !== 3)
           throw new Error(
-            'Wrong ingredient fromat! Please use the correct format :)'
+            'Wrong ingredient format! Please use the correct format :)'
           );
 
         // Return data:
@@ -188,7 +188,7 @@ export const uploadRecipe = async function (recipeArr) {
     // Render Data:
     addBookmark(state.recipe);
 
-    // Error handeling:
+    // Error handling:
   } catch (err) {
     throw err;
   }

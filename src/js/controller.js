@@ -9,7 +9,7 @@ import resultsView from './view/resultsView.js';
 import paginationView from './view/paginationView.js';
 import bookmarksView from './view/bookmarksView.js';
 import AddRecipeView from './view/addRecipeView.js';
-import { closeModleSec } from './config.js';
+import { closeModelSec } from './config.js';
 
 // Addons Import:
 import 'core-js/stable';
@@ -30,7 +30,7 @@ const controlRecipe = async function () {
     const id = window.location.hash.slice(1);
     if (!id) return;
 
-    // Update search list(mark selectd):
+    // Update search list(mark selected):
     resultsView.update(model.getSearchResultsByPage());
     bookmarksView.update(model.state.bookmarks);
 
@@ -38,7 +38,7 @@ const controlRecipe = async function () {
     recipeView.renderSpinner();
     await model.loadRecipe(id);
 
-    //Rnder Recipe:
+    //Render Recipe:
     recipeView.render(model.state.recipe);
 
     // Error catching:
@@ -59,7 +59,7 @@ const renderPagination = function (page) {
 };
 
 // Control pagination on page click buttons:
-const controllPagination = function (inc) {
+const controlPagination = function (inc) {
   renderPagination((model.state.search.page += inc));
 };
 
@@ -75,7 +75,7 @@ const controlSearchResults = async function () {
     resultsView.renderSpinner();
     await model.loadSearchResults(query);
 
-    // Renfer pagination:
+    // Render pagination:
     renderPagination(1);
 
     // Error catching:
@@ -85,8 +85,8 @@ const controlSearchResults = async function () {
 };
 
 /////////////////////////////////////////////////////////////////
-// Controll servings + update renderd data:
-const controllServings = function (inc) {
+// Control servings + update rendered data:
+const controlServings = function (inc) {
   // Update servings size in model state:
   model.updateServings(inc);
 
@@ -126,12 +126,12 @@ const controlAddRecipe = async function (newRecipe) {
     // Close form model:
     setTimeout(function () {
       addRecipeView.toggleWindow();
-    }, closeModleSec * 1000);
+    }, closeModelSec * 1000);
 
     // Change hash in window
     window.history.pushState(null, '', `#${model.state.recipe.id}`);
 
-    // Error handeling:
+    // Error handling:
   } catch (err) {
     // console.error(err)
     addRecipeView.renderError(err.message);
@@ -141,10 +141,10 @@ const controlAddRecipe = async function (newRecipe) {
 /////////////////////////////////////////////////////////////////
 // Initialization
 const init = function () {
-  // Evnet handlers:
-  recipeView.addHandlerRender(controlRecipe, controllServings, controlAddBookmark);
+  // Event handlers:
+  recipeView.addHandlerRender(controlRecipe, controlServings, controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
-  paginationView.addHandlerClick(controllPagination);
+  paginationView.addHandlerClick(controlPagination);
   AddRecipeView.uploadRecipe(controlAddRecipe);
 
   // Fetch bookmarks:

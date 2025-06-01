@@ -10,7 +10,7 @@ import View from './view';
 // RecipeView class:
 class RecipeView extends View {
   // Private declarations:
-  _perentElement = document.querySelector('.recipe');
+  _parentElement = document.querySelector('.recipe');
   _errorMessage = 'We could not find that recipe. Please try a different one.';
   _message = 'Start by searching for a recipe or an ingredient. Have fun!';
 
@@ -20,7 +20,7 @@ class RecipeView extends View {
     ['hashchange', 'load'].forEach((e) => window.addEventListener(e, loadRecipe));
 
     // Listen for click on servings change:
-    this._perentElement.addEventListener('click', function (e) {
+    this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--tiny');
       if (!btn) return;
 
@@ -30,7 +30,7 @@ class RecipeView extends View {
     });
 
     // Listen for bookmark click:
-    this._perentElement.addEventListener('click', function (e) {
+    this._parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.btn--bookmark');
       if (!btn) return;
       bookmark();
@@ -90,7 +90,7 @@ class RecipeView extends View {
                 <use href="${icons}#icon-bookmark${
       this._data.bookmarked ? '-fill' : ''
     }"></use>
-            </svg>
+                </svg>
         </button>
     </div>
 

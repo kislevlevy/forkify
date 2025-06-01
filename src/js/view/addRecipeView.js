@@ -3,13 +3,14 @@
 ////////////////////////////////////////////////////////////////
 // Addons import:
 import View from './view';
+import icons from 'url:../../img/icons.svg';
 
 ////////////////////////////////////////////////////////////////
 // Add Recipe View class:
 class AddRecipeView extends View {
   // Private declarations:
   _message = 'Recipe was upload successfully!';
-  _perentElement = document.querySelector('.upload');
+  _parentElement = document.querySelector('.upload');
   _window = document.querySelector('.add-recipe-window');
   _overlay = document.querySelector('.overlay');
   _btnOpen = document.querySelector('.nav__btn--add-recipe');
@@ -35,8 +36,8 @@ class AddRecipeView extends View {
   }
 
   uploadRecipe(handler) {
-    // Event listiner:
-    this._perentElement.addEventListener('submit', function (e) {
+    // Event listener:
+    this._parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
 
       // Get form data:
@@ -114,7 +115,7 @@ class AddRecipeView extends View {
 
         <button class="btn upload__btn">
           <svg>
-            <use href="src/img/icons.svg#icon-upload-cloud"></use>
+            <use href="${icons}#icon-upload-cloud"></use>
           </svg>
           <span>Upload</span>
         </button>

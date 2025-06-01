@@ -9,10 +9,10 @@ import View from './view';
 // PreviewView class:
 export default class PreviewView extends View {
   // Private declarations:
-  _perentElement = '';
+  _parentElement = '';
 
   // Generate HTML markup preview for DOM insert:
-  _generateMarkupPriview(res) {
+  _generateMarkupPreview(res) {
     const id = window.location.hash.slice(1);
     return `
     <li class="preview">
