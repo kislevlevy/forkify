@@ -3,7 +3,7 @@
   "default": "index.js",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist",
+    "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist --public-url ./",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
