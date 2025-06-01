@@ -1,14 +1,11 @@
 {
   "name": "forkify",
-  "version": "1.0.0",
-  "description": "",
   "default": "index.js",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist"
+    "build": "parcel build index.html --no-scope-hoist --dist-dir ./dist",
+    "deploy": "npm run build && gh-pages -d dist"
   },
-  "author": "Kislev Levy",
-  "license": "ISC",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",
     "parcel": "^2.12.0",
@@ -17,6 +14,7 @@
   "dependencies": {
     "core-js": "^3.36.1",
     "fractional": "^1.0.0",
+    "gh-pages": "^6.3.0",
     "regenerator-runtime": "^0.14.1"
   }
 }
