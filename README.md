@@ -49,7 +49,7 @@ To run the project locally, follow these steps:
    npm run dev
    ```
 
-> You can also preview the application by visiting the following link: [Forkify](http://kislev.me/forkify)
+> You can also preview the application by visiting the following link: [Forkify](https://kislevlevy.github.io/forkify/)
 
 ## Usage
 
